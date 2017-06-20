@@ -27,6 +27,7 @@ ARG user=jenkins
 ARG group=jenkins
 ARG uid=10000
 ARG gid=10000
+ARG docker_version=17.05.0-ce
 ARG JENKINS_AGENT_HOME=/home/${user}
 
 ENV JENKINS_AGENT_HOME ${JENKINS_AGENT_HOME}
@@ -45,6 +46,12 @@ RUN sed -i /etc/ssh/sshd_config \
         -e 's/#SyslogFacility.*/SyslogFacility AUTH/' \
         -e 's/#LogLevel.*/LogLevel INFO/' && \
     mkdir /var/run/sshd
+
+RUN curl -vOL "https://get.docker.com/builds/Linux/x86_64/docker-${docker_version}.tgz" \
+    && "tar zxvf docker-${docker_version}.tgz" \
+    && chmod +x docker/docker \
+    && mv docker/docker /usr/bin/ \
+    && rm -rf docker*
 
 VOLUME "${JENKINS_AGENT_HOME}" "/tmp" "/run" "/var/run"
 WORKDIR "${JENKINS_AGENT_HOME}"
