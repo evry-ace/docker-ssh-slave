@@ -48,7 +48,7 @@ RUN sed -i /etc/ssh/sshd_config \
     mkdir /var/run/sshd
 
 RUN curl -vOL "https://get.docker.com/builds/Linux/x86_64/docker-${docker_version}.tgz" \
-    && "tar zxvf docker-${docker_version}.tgz" \
+    && tar zxvf "docker-${docker_version}.tgz" \
     && chmod +x docker/docker \
     && mv docker/docker /usr/bin/ \
     && rm -rf docker*
