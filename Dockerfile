@@ -25,8 +25,8 @@ LABEL MAINTAINER="Nicolas De Loof <nicolas.deloof@gmail.com>"
 
 ARG user=jenkins
 ARG group=jenkins
-ARG uid=10000
-ARG gid=10000
+ARG uid=1000
+ARG gid=1000
 ARG docker_version=17.05.0-ce
 ARG JENKINS_AGENT_HOME=/home/${user}
 
