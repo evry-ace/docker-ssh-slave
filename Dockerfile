@@ -53,7 +53,7 @@ RUN curl -vOL "https://get.docker.com/builds/Linux/x86_64/docker-${docker_versio
     && mv docker/docker /usr/bin/ \
     && rm -rf docker*
 
-VOLUME "${JENKINS_AGENT_HOME}" "/tmp" "/run" "/var/run"
+#VOLUME "${JENKINS_AGENT_HOME}" "/tmp" "/run" "/var/run"
 WORKDIR "${JENKINS_AGENT_HOME}"
 
 COPY setup-sshd /usr/local/bin/setup-sshd
