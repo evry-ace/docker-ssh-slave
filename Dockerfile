@@ -27,7 +27,7 @@ ARG user=jenkins
 ARG group=jenkins
 ARG uid=1000
 ARG gid=1000
-ARG docker_version=17.05.0-ce
+ARG docker_version=18.09.6
 ARG JENKINS_AGENT_HOME=/home/${user}
 
 ENV JENKINS_AGENT_HOME ${JENKINS_AGENT_HOME}
@@ -47,7 +47,7 @@ RUN sed -i /etc/ssh/sshd_config \
         -e 's/#LogLevel.*/LogLevel INFO/' && \
     mkdir /var/run/sshd
 
-RUN curl -vOL "https://get.docker.com/builds/Linux/x86_64/docker-${docker_version}.tgz" \
+RUN curl -vOL "https://download.docker.com/linux/static/stable/x86_64/docker-${docker_version}.tgz" \
     && tar zxvf "docker-${docker_version}.tgz" \
     && chmod +x docker/docker \
     && mv docker/docker /usr/bin/ \
